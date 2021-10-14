@@ -1,0 +1,7 @@
+﻿  Symbol.cpp
+  Translator.cpp
+C:\Users\xueyaojiang\source\repos\Project1\Project1\Translator.cpp(56,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\xueyaojiang\source\repos\Project1\Project1\Translator.cpp(372,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\xueyaojiang\source\repos\Project1\Project1\Translator.cpp(377,21): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Project1.vcxproj -> C:\Users\xueyaojiang\source\repos\Project1\Debug\Project1.exe

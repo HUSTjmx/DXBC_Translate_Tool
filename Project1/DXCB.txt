@@ -1,0 +1,114 @@
+add r0.x, v5.y, v5.x
+add r0.x, r0.x, v5.z
+add r0.x, -r0.x, l(1.000000)
+imul null, r1.xyzw, v4.xyzw, l(3, 3, 3, 3)
+mul r2.xyzw, v5.yyyy, cb0[r1.y + 53].xyzw
+mad r2.xyzw, v5.xxxx, cb0[r1.x + 53].xyzw, r2.xyzw
+mad r2.xyzw, v5.zzzz, cb0[r1.z + 53].xyzw, r2.xyzw
+mad r2.xyzw, r0.xxxx, cb0[r1.w + 53].xyzw, r2.xyzw
+mul r3.xyz, v0.xyzx, cb0[8].xyzx
+mov r3.w, l(1.000000)
+dp4 r4.y, r2.xyzw, r3.xyzw
+mul r5.xyzw, r4.yyyy, cb0[1].xyzw
+mul r6.xyzw, v5.yyyy, cb0[r1.y + 52].xyzw
+mad r6.xyzw, v5.xxxx, cb0[r1.x + 52].xyzw, r6.xyzw
+mad r6.xyzw, v5.zzzz, cb0[r1.z + 52].xyzw, r6.xyzw
+mad r6.xyzw, r0.xxxx, cb0[r1.w + 52].xyzw, r6.xyzw
+dp4 r4.x, r6.xyzw, r3.xyzw
+mad r5.xyzw, r4.xxxx, cb0[0].xyzw, r5.xyzw
+mul r7.xyzw, v5.yyyy, cb0[r1.y + 54].xyzw
+mad r7.xyzw, v5.xxxx, cb0[r1.x + 54].xyzw, r7.xyzw
+mad r7.xyzw, v5.zzzz, cb0[r1.z + 54].xyzw, r7.xyzw
+mad r0.xyzw, r0.xxxx, cb0[r1.w + 54].xyzw, r7.xyzw
+dp4 r4.z, r0.xyzw, r3.xyzw
+mad r1.xyzw, r4.zzzz, cb0[2].xyzw, r5.xyzw
+add o0.xyzw, r1.xyzw, cb0[3].xyzw
+mov o1.xyz, l(1.000000,1.000000,1.000000,0)
+mov o1.w, v2.w
+mul r0.w, |v0.w|, cb0[8].w
+ftou r0.w, r0.w
+ubfe r1.xyzw, l(7, 7, 8, 8), l(8, 1, 9, 1), r0.wwww
+utof r1.xyzw, r1.xyzw
+mul r1.xy, r1.xyxx, l(2.007874, 2.007874, 0.000000, 0.000000)
+round_ni r1.xy, r1.xyxx
+lt r0.w, l(1.000000), cb0[8].w
+movc r1.xy, r0.wwww, r1.xyxx, r1.zwzz
+mul o2.zw, r1.xxxy, l(0.000000, 0.000000, 0.003922, 0.003922)
+mov o2.x, v1.w
+mov o2.y, v2.w
+mad o3.xy, cb0[16].xyxx, cb0[9].wwww, v3.xyxx
+mov o3.zw, v3.zzzw
+mul r1.xy, v2.zyzz, l(255.000000, 15.937500, 0.000000, 0.000000)
+frc r0.w, r1.y
+mad r3.y, r0.w, l(4096.000000), r1.x
+round_ni r0.w, r1.y
+mad r3.x, v2.x, l(4080.000000), r0.w
+mad r1.xy, r3.xyxx, l(0.000489, 0.000489, 0.000000, 0.000000), l(-1.000000, -1.000000, 0.000000, 0.000000)
+max r1.xy, r1.xyxx, l(-1.000000, -1.000000, 0.000000, 0.000000)
+min r1.xy, r1.xyxx, l(1.000000, 1.000000, 0.000000, 0.000000)
+ge r1.zw, r1.xxxy, l(0.000000, 0.000000, 0.000000, 0.000000)
+add r0.w, -|r1.x|, l(1.000000)
+add r3.z, -|r1.y|, r0.w
+max r0.w, -r3.z, l(0.000000)
+movc r1.zw, r1.zzzw, -r0.wwww, r0.wwww
+add r3.xy, r1.zwzz, r1.xyxx
+dp3 r0.w, r3.xyzx, r3.xyzx
+rsq r0.w, r0.w
+mul r1.xyz, r0.wwww, r3.xyzx
+dp3 r3.x, r6.xyzx, r1.xyzx
+dp3 r3.y, r2.xyzx, r1.xyzx
+dp3 r3.z, r0.xyzx, r1.xyzx
+dp3 r0.w, r3.xyzx, r3.xyzx
+rsq r0.w, r0.w
+mul r1.xyz, r0.wwww, r3.xyzx
+mul r3.xyz, r1.yyyy, cb0[5].xyzx
+mad r3.xyz, r1.xxxx, cb0[4].xyzx, r3.xyzx
+mad o4.xyz, r1.zzzz, cb0[6].xyzx, r3.xyzx
+add r3.xyz, -r4.xyzx, cb0[9].xyzx
+dp3 o4.w, r3.xyzx, r1.xyzx
+mul r5.xy, v1.zyzz, l(255.000000, 15.937500, 0.000000, 0.000000)
+frc r0.w, r5.y
+mad r7.y, r0.w, l(4096.000000), r5.x
+round_ni r0.w, r5.y
+mad r7.x, v1.x, l(4080.000000), r0.w
+mad r5.xy, r7.xyxx, l(0.000489, 0.000489, 0.000000, 0.000000), l(-1.000000, -1.000000, 0.000000, 0.000000)
+max r5.xy, r5.xyxx, l(-1.000000, -1.000000, 0.000000, 0.000000)
+min r5.xy, r5.xyxx, l(1.000000, 1.000000, 0.000000, 0.000000)
+ge r5.zw, r5.xxxy, l(0.000000, 0.000000, 0.000000, 0.000000)
+add r0.w, -|r5.x|, l(1.000000)
+add r7.z, -|r5.y|, r0.w
+max r0.w, -r7.z, l(0.000000)
+movc r5.zw, r5.zzzw, -r0.wwww, r0.wwww
+add r7.xy, r5.zwzz, r5.xyxx
+dp3 r0.w, r7.xyzx, r7.xyzx
+rsq r0.w, r0.w
+mul r5.xyz, r0.wwww, r7.xyzx
+dp3 r6.x, r6.xyzx, r5.xyzx
+dp3 r6.y, r2.xyzx, r5.xyzx
+dp3 r6.z, r0.xyzx, r5.xyzx
+dp3 r0.x, r6.xyzx, r6.xyzx
+rsq r0.x, r0.x
+mul r0.xyz, r0.xxxx, r6.xyzx
+mul r2.xyz, r1.yzxy, r0.zxyz
+mad r1.xyz, r0.yzxy, r1.zxyz, -r2.xyzx
+lt r0.w, l(0.000000), v0.w
+lt r1.w, v0.w, l(0.000000)
+iadd r0.w, -r0.w, r1.w
+itof r0.w, r0.w
+mul r1.xyz, r0.wwww, r1.xyzx
+mul r2.xyz, r1.yyyy, cb0[5].xyzx
+mad r2.xyz, r1.xxxx, cb0[4].xyzx, r2.xyzx
+mad o5.xyz, r1.zzzz, cb0[6].xyzx, r2.xyzx
+dp3 o5.w, r3.xyzx, r1.xyzx
+dp3 o6.w, r3.xyzx, r0.xyzx
+mul r1.xyz, r0.yyyy, cb0[5].xyzx
+mad r0.xyw, r0.xxxx, cb0[4].xyxz, r1.xyxz
+mad o6.xyz, r0.zzzz, cb0[6].xyzx, r0.xywx
+mul r0.xyz, r4.yyyy, cb0[5].xyzx
+mul r0.w, r4.y, cb0[33].w
+mad r0.w, r4.x, cb0[32].w, r0.w
+mad r0.xyz, r4.xxxx, cb0[4].xyzx, r0.xyzx
+mad r0.xyz, r4.zzzz, cb0[6].xyzx, r0.xyzx
+mad r0.w, r4.z, cb0[34].w, r0.w
+add o7.w, r0.w, cb0[35].w
+add o7.xyz, r0.xyzx, cb0[7].xyzx
